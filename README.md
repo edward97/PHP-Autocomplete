@@ -1,1 +1,1 @@
--- ESJ - Autocomplete JQuery, Ajax & MySQL --
+-- ESJ - Autocomplete JQuery, PHP, Ajax & MySQL --
