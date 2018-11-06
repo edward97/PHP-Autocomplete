@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Query Autocomplete With Dynamic JSON Data from PHP, Ajax and MySQL Database - #3</h1>
+        <h1>jQuery Autocomplete - Show No Record Found - #4</h1>
 
         <div class="row">
             <div class="form-group col-sm-6">
@@ -39,30 +39,32 @@
 
         $("#ui-demo").autocomplete({
             source: function(request, response) {
-                // console.log(request, response);
                 $.ajax({
                     url: 'ajax.php',
                     method: 'get',
                     data: { name: request.term },
                     dataType: 'json',
                     success: function(data) {
-                        // console.log(data);
-                        // response(data);
-                        
-                        d = $.map(data, function(name) {
-                            return {
-                                label: name,
-                                value: name
+                        d = [
+                            {
+                                label: 'There is matching record found for: '+request.term,
+                                value: ''
                             }
-                        });
-                        // console.log(d);
+                        ];
+
+                        if (data.length) {
+                            d = $.map(data, function(name) {
+                                return {
+                                    label: name,
+                                    value: name
+                                }
+                            });   
+                        }
                         response(d);
                     }
                 });
             }
         });
     </script>
-
 </body>
 </html>
-
